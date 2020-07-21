@@ -11,12 +11,12 @@ public class DebugUI : MonoBehaviour
     private Text sliderText;
 
     public string text;
-    bool isOn = false;
+    int counter = 0;
 
 	void Start ()
     {
-        text = "Ready!";
-        DebugUIBuilder.instance.AddButton("Button Pressed", LogButtonPressed);
+        text = "Debug Log";
+        DebugUIBuilder.instance.AddButton("Count Button", LogButtonPressed, DebugUIBuilder.DEBUG_PANE_RIGHT);
         DebugUIBuilder.instance.AddLabel(text);
         // var sliderPrefab = DebugUIBuilder.instance.AddSlider("Slider", 1.0f, 10.0f, SliderPressed, true);
         // var textElementsInSlider = sliderPrefab.GetComponentsInChildren<Text>();
@@ -73,10 +73,8 @@ public class DebugUI : MonoBehaviour
     {
         Debug.Log("Button pressed");
 
-        if(isOn) TextChanged("Button pressed");
-        else TextChanged("Off");
-
-        isOn = !isOn;
+        counter++;
+        TextChanged("Button pressed: " + counter.ToString());
 
         DebugUIBuilder.instance.AddLabel(text);
         DebugUIBuilder.instance.Show();
