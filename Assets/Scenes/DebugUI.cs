@@ -55,6 +55,8 @@ public class DebugUI : MonoBehaviour
     public void TextChanged(string newText)
     {
         this.text = newText;
+        DebugUIBuilder.instance.AddLabel(text);
+        DebugUIBuilder.instance.Show();
     }
 
     void Update()
@@ -75,8 +77,10 @@ public class DebugUI : MonoBehaviour
 
         counter++;
         TextChanged("Button pressed: " + counter.ToString());
+    }
 
-        DebugUIBuilder.instance.AddLabel(text);
-        DebugUIBuilder.instance.Show();
+    public void debugPrint(string t)
+    {
+        TextChanged(t);
     }
 }
