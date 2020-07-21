@@ -10,10 +10,14 @@ public class DebugUI : MonoBehaviour
     bool inMenu;
     private Text sliderText;
 
+    public string text;
+    bool isOn = false;
+
 	void Start ()
     {
-        // DebugUIBuilder.instance.AddButton("Button Pressed", LogButtonPressed);
-        DebugUIBuilder.instance.AddLabel("Label");
+        text = "Ready!";
+        DebugUIBuilder.instance.AddButton("Button Pressed", LogButtonPressed);
+        DebugUIBuilder.instance.AddLabel(text);
         // var sliderPrefab = DebugUIBuilder.instance.AddSlider("Slider", 1.0f, 10.0f, SliderPressed, true);
         // var textElementsInSlider = sliderPrefab.GetComponentsInChildren<Text>();
         // Assert.AreEqual(textElementsInSlider.Length, 2, "Slider prefab format requires 2 text components (label + value)");
@@ -48,6 +52,11 @@ public class DebugUI : MonoBehaviour
         sliderText.text = f.ToString();
     }
 
+    public void TextChanged(string newText)
+    {
+        this.text = newText;
+    }
+
     void Update()
     {
         if(OVRInput.GetDown(OVRInput.Button.Two) || OVRInput.GetDown(OVRInput.Button.Start))
@@ -56,10 +65,20 @@ public class DebugUI : MonoBehaviour
             else DebugUIBuilder.instance.Show();
             inMenu = !inMenu;
         }
+
+        
     }
 
     void LogButtonPressed()
     {
         Debug.Log("Button pressed");
+
+        if(isOn) TextChanged("Button pressed");
+        else TextChanged("Off");
+
+        isOn = !isOn;
+
+        DebugUIBuilder.instance.AddLabel(text);
+        DebugUIBuilder.instance.Show();
     }
 }
