@@ -22,9 +22,9 @@ public class Snare : MonoBehaviour
     {
         if ((collision.gameObject.name == "StickL") || (collision.gameObject.name == "StickR"))
         {
-            DebugUIBuilder.instance.AddLabel("Hit! Snare: " + collision.gameObject.name);
+            DebugUIBuilder.instance.AddLabel("Hit! " + transform.name + ": " + collision.gameObject.name);
             DebugUIBuilder.instance.Show();
-            audioSource.Play ();
+            audioSource.PlayOneShot(audioSource.clip);
         }
     }
 }

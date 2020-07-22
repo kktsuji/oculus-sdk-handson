@@ -30,7 +30,7 @@ public class Stick : MonoBehaviour
                 DebugUIBuilder.instance.Show();
                 // audioSource.clip = stick4;
                 // audioSource.Play ();
-                audioSource.Play();
+                audioSource.PlayOneShot(audioSource.clip);
             }
             else if (collision.gameObject.name == "Snare")
             {
