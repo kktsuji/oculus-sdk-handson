@@ -3,7 +3,9 @@ guid: 503655688d5fb4f24a2f8d4b6bb8caad
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - snare7: {fileID: 8300000, guid: 6f8c1b15166f449adbcf6da295271ced, type: 3}
+  - stick4: {fileID: 8300000, guid: 31a555b65abe44b6286ebc0118a90ef7, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

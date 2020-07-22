@@ -5,11 +5,13 @@ using UnityEngine;
 public class Stick : MonoBehaviour
 {
     private int counter = 0;
+    private AudioSource audioSource;
+    // private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -22,16 +24,19 @@ public class Stick : MonoBehaviour
     {
         if (transform.name == "StickR")
         {
-            if (collision.gameObject.name == "Snare")
+            if (collision.gameObject.name == "StickL")
             {
-                counter++;
-                DebugUIBuilder.instance.AddLabel("Touched: " + collision.gameObject.name + " " + counter.ToString());
+                DebugUIBuilder.instance.AddLabel("Hit! " + transform.name + ": " + collision.gameObject.name);
                 DebugUIBuilder.instance.Show();
+                // audioSource.clip = stick4;
+                // audioSource.Play ();
+                audioSource.Play();
             }
-            else if (collision.gameObject.name == "StickL")
+            else if (collision.gameObject.name == "Snare")
             {
-                DebugUIBuilder.instance.AddLabel("Touched: " + collision.gameObject.name);
-                DebugUIBuilder.instance.Show();
+                // counter++;
+                // DebugUIBuilder.instance.AddLabel("Hit!: " + collision.gameObject.name + " " + counter.ToString());
+                // DebugUIBuilder.instance.Show();
             }
         }
     }
