@@ -73,3 +73,10 @@ InitTestScene*.unity
 
 # End of https://www.toptal.com/developers/gitignore/api/unity
 Assets/Oculus*
+Assets/SteamVR*
+Assets/HTC.UnityPlugin*
+Assets/MagicMirror*
+Assets/StreamingAssets*
+Assets/UnityChan*
+
+Assets/Plugins*
