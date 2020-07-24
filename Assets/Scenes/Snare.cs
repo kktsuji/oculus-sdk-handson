@@ -15,7 +15,7 @@ public class Snare : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -24,7 +24,8 @@ public class Snare : MonoBehaviour
         {
             DebugUIBuilder.instance.AddLabel("Hit! " + transform.name + ": " + collision.gameObject.name);
             DebugUIBuilder.instance.Show();
-            audioSource.PlayOneShot(audioSource.clip);
+            audioSource.Stop();
+            audioSource.Play();
         }
     }
 }
